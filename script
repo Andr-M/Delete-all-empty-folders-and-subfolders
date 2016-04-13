@@ -1,0 +1,11 @@
+
+    public static void deleteEmptyDirs(File folder){
+        if (!folder.isDirectory()) return; // avoid to delete files
+        if (folder.delete()) return;
+        if (folder.isDirectory()){
+            for (File f: folder.listFiles()){
+                deleteEmptyDirs(f);
+            }
+        }
+        if (folder.delete() && folder.isDirectory());
+    }
